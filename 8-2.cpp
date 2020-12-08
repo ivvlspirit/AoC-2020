@@ -25,7 +25,7 @@ int main(){
 
 
     for(int i=0; i<n; i++){
-        if(commandsOriginal[i] == "acc") continue;
+        if(commandsOriginal[i].substr(0, 3) == "acc") continue;
 
         bool gotInALoop = false;
 
@@ -33,13 +33,6 @@ int main(){
         int acc = 0;
 
         vector<string> commands = commandsOriginal;
-
-        if(i==0){
-            for(auto it : commands){
-                cout << it << endl;
-            }
-        }
-
         vector<bool> used(n, false);
 
         if(commands[i].substr(0, 3) == "jmp"){
@@ -47,7 +40,7 @@ int main(){
         }else if(commands[i].substr(0, 3) == "nop"){
             commands[i].replace(0, 3, "jmp");
         }else{
-            cout << "Error parsing commands!\n";
+            cout << "Error parsing commands: " << commands[i].substr(0, 3) << endl;
         }
         
 
